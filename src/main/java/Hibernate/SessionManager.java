@@ -1,16 +1,11 @@
-package Hibernate;
+package hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-public class SesionManager {
+public class SessionManager {
     private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessionFactory() {

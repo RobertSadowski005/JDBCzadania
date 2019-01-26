@@ -1,11 +1,11 @@
-package Hibernate;
+package hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "customersTable")
-class Costumer {
+class Customer {
     @Id
     @Column(name = "primary_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +34,9 @@ class Costumer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Costumer costumer = (Costumer) o;
-        return Objects.equals(id, costumer.id) &&
-                Objects.equals(name, costumer.name);
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id) &&
+                Objects.equals(name, customer.name);
     }
 
     @Override
