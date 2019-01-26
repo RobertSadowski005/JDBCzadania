@@ -43,6 +43,7 @@ public class Zadanko {
                             .toString();
                     System.out.println(row);
                 }
+
                 resultSet.close();
             }
         }
