@@ -1,7 +1,6 @@
 package hibernate;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -32,17 +31,8 @@ public class Main {
         session.close();
     }
 
-    public static void findAndChange() {
-        Session session = SessionManager.getSessionFactory().openSession();
-        session.beginTransaction();
-        Customer customer = session.find(Customer.class, 1L);
-        System.out.println(customer);
 
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    public static void findByName(String name) {
+    public static void findByName() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
         Customer customer = session.find(Customer.class, 1L);
