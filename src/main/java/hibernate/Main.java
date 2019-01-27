@@ -2,15 +2,18 @@ package hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        SessionFactory sessionFactory = SessionManager.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.close();
+        updateQuery();
+        SessionManager.getSessionFactory().close();
+
     }
 
-    public void save(){
+    public static void save() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
         Customer custumer = new Customer();
@@ -20,7 +23,7 @@ public class Main {
         session.close();
     }
 
-    public void find () {
+    public static void find() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
         Customer customer = session.find(Customer.class, 1L);
@@ -28,4 +31,44 @@ public class Main {
         session.getTransaction().commit();
         session.close();
     }
+
+    public static void findAndChange() {
+        Session session = SessionManager.getSessionFactory().openSession();
+        session.beginTransaction();
+        Customer customer = session.find(Customer.class, 1L);
+        System.out.println(customer);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public static void findByName(String name) {
+        Session session = SessionManager.getSessionFactory().openSession();
+        session.beginTransaction();
+        Customer customer = session.find(Customer.class, 1L);
+        System.out.println(customer);
+//        String hqlQuery = "select s from Customer s where s.name = :name";
+
+        Query<Customer> query = session.createNamedQuery("selectByName", Customer.class);
+        query.setParameter("value", "Robert");
+        List<Customer> list = query.list();
+        System.out.println(list);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public static void updateQuery() {
+        Session session = SessionManager.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("update Costumer " +
+                "set name = :valueForName " +
+                "where name like :value1 or id = :value2");
+        query.setParameter("valueForName", "Przemio");
+        query.setParameter("value1", "2%");
+        query.setParameter("value2", "To%");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+    }
+
 }

@@ -5,7 +5,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class SesionManager {
+public class SessionManager {
     private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessionFactory() {
@@ -22,7 +22,8 @@ public class SesionManager {
                 e.printStackTrace();
                 StandardServiceRegistryBuilder.destroy(registry);
             }
-        }return sessionFactory;
+        }
+        return sessionFactory;
     }
 
 }
