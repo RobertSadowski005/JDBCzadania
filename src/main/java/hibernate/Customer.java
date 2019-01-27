@@ -8,13 +8,16 @@ import java.util.Objects;
 @NamedQueries({
         @NamedQuery(name = "selectByName", query = "select c from Customer c where c.name = :value")
 })
-class Customer {
+public class Customer {
     @Id
     @Column(name = "primary_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Article article;
 
 
     public Long getId() {
@@ -53,5 +56,13 @@ class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }
