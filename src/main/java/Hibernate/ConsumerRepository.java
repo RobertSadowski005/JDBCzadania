@@ -4,19 +4,22 @@ import org.hibernate.Session;
 
 public class ConsumerRepository {
 
+    public static void main(String[] args) {
 
+
+    }
     public void createCustomerWithAddress1() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
-        Costumer costumer = new Costumer();
-        costumer.setName("Franek Bąbka");
-        Article address = new Article();
-        address.setCountry("Polska");
-        address.setStreet("Wiejska");
-        address.setHouseNumber(23);
-        costumer.setAddress(address);
-        session.save(costumer);
-        System.out.println(costumer.getAddress());
+        Customer customer = new Customer();
+        customer.setName("Franek Bąbka");
+        Article article = new Article();
+        article.setProductName("Polska");
+        article.setProductName("Cebula");
+        article.setCode("23");
+        customer.setName("name");
+        session.save(article);
+        System.out.println(customer.getArticle());
         session.getTransaction().commit();
         session.close();
     }
@@ -24,12 +27,12 @@ public class ConsumerRepository {
     public void createCustomerWithAddress2() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
-        Costumer costumer = new Costumer();
-        costumer.setName("Franek Bąbka");
-        Article address = session.find(Address.class, 2L);
-        costumer.setAddress(address);
-        session.save(costumer);
-        System.out.println(costumer.getAddress());
+        Customer customer = new Customer();
+        customer.setName("Franek Bąbka");
+        Article article = session.find(Article.class, 2L);
+        customer.setArticle(article);
+        session.save(customer);
+        System.out.println(customer.getArticle());
         session.getTransaction().commit();
         session.close();
     }
@@ -37,13 +40,13 @@ public class ConsumerRepository {
     public void createCustomerWithAddress3() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
-        Costumer costumer = new Costumer();
+        Customer costumer = new Customer();
         costumer.setName("Franek Bąbka");
-        Article address = new Address();
+        Article address = new Article();
         address.setId(2L);
-        costumer.setAddress(address);
+        costumer.setArticle(address);
         session.save(costumer);
-        System.out.println(costumer.getAddress());
+        System.out.println(costumer.getArticle());
         session.getTransaction().commit();
         session.close();
     }
@@ -51,11 +54,11 @@ public class ConsumerRepository {
     public void findCustomerWithAddress() {
         Session session = SessionManager.getSessionFactory().openSession();
         session.beginTransaction();
-        Costumer costumer = session.find(Costumer.class, 2L);
+        Customer costumer = session.find(Customer.class, 2L);
         System.out.println("pobieram klienta");
         System.out.println(costumer);
         System.out.println("odczytuje adres klienta");
-        System.out.println(costumer.getAddress());
+        System.out.println(costumer.getArticle());
         session.getTransaction().commit();
         session.close();
     }
