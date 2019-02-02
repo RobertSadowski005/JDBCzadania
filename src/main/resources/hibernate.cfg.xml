@@ -24,7 +24,7 @@
 
         <mapping class="hibernate.Customer" />
         <mapping class="hibernate.Article" />
-
+        <mapping class="hibernate.Address" />
 
     </session-factory>
 

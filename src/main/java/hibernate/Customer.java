@@ -15,10 +15,15 @@ public class Customer {
     private Long id;
     @Column
     private String name;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
-    private Article article;
+    private Address address;
 
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -58,11 +63,8 @@ public class Customer {
                 '}';
     }
 
-    public Article getArticle() {
-        return article;
-    }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public Address getAddress() {
+        return address;
     }
 }
