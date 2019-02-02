@@ -19,7 +19,7 @@ public class ConsumerRepository {
         article.setCode("23");
         customer.setName("name");
         session.save(article);
-        System.out.println(customer.getArticle());
+        System.out.println(customer.getAddress());
         session.getTransaction().commit();
         session.close();
     }
@@ -29,10 +29,10 @@ public class ConsumerRepository {
         session.beginTransaction();
         Customer customer = new Customer();
         customer.setName("Franek Bąbka");
-        Article article = session.find(Article.class, 2L);
-        customer.setArticle(article);
+        Address address = session.find(Address.class, 2L);
+        customer.setAddress(address);
         session.save(customer);
-        System.out.println(customer.getArticle());
+        System.out.println(customer.getAddress());
         session.getTransaction().commit();
         session.close();
     }
@@ -42,11 +42,11 @@ public class ConsumerRepository {
         session.beginTransaction();
         Customer costumer = new Customer();
         costumer.setName("Franek Bąbka");
-        Article address = new Article();
+        Address address = new Address();
         address.setId(2L);
-        costumer.setArticle(address);
+        costumer.setAddress(address);
         session.save(costumer);
-        System.out.println(costumer.getArticle());
+        System.out.println(costumer.getAddress());
         session.getTransaction().commit();
         session.close();
     }
@@ -58,7 +58,7 @@ public class ConsumerRepository {
         System.out.println("pobieram klienta");
         System.out.println(costumer);
         System.out.println("odczytuje adres klienta");
-        System.out.println(costumer.getArticle());
+        System.out.println(costumer.getAddress());
         session.getTransaction().commit();
         session.close();
     }

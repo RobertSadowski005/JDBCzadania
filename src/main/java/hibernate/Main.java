@@ -21,7 +21,7 @@ public class Main {
         }
         byId.ifPresent(address -> System.out.println(address.getCity()));
         //        selectByCriteria();
-      //  SessionManager.getSessionFactory().close();
+        //  SessionManager.getSessionFactory().close();
     }
 
     public static void perist() {

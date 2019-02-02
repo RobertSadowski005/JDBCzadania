@@ -21,7 +21,7 @@ public class Address {
     @Column
     private Integer houseNumber;
     @Version
-    private Long version;
+    private long version;
     @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
     private Set<Customer> locators;
 
@@ -39,11 +39,11 @@ public class Address {
         return Objects.hash(version);
     }
 
-    public Long getVersion() {
+    public long getVersion() {
         return version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(long version) {
         this.version = version;
     }
 
